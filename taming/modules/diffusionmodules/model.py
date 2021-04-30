@@ -692,7 +692,7 @@ class VUNet(nn.Module):
 
 
 class SimpleDecoder(nn.Module):
-    def __init__(self, in_channels, out_channels, *args, **kwargs):
+    def __init__(self, in_channels, out_channels=3, *args, **kwargs):
         super().__init__()
         self.model = nn.ModuleList([nn.Conv2d(in_channels, in_channels, 1),
                                      ResnetBlock(in_channels=in_channels,
