@@ -23,7 +23,7 @@ class VQModel(pl.LightningModule):
         super().__init__()
         self.image_key = image_key
         self.encoder = Encoder(**ddconfig)
-        self.decoder = SimpleDecoder(**ddconfig)
+        self.decoder = SimpleDecoder(**ddconfig, channels=3)
         self.loss = instantiate_from_config(lossconfig)
         self.quantize = VectorQuantizer(n_embed, embed_dim, beta=0.25)
         self.quant_conv = torch.nn.Conv2d(ddconfig["z_channels"], embed_dim, 1)
